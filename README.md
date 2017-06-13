@@ -39,9 +39,7 @@ batters, full name of a pitcher, separated by commas and in single line.
 - 2016 Play-by-play and Retrosheet BEVENT software (2016plays.txt)
 	
 	<http://www.retrosheet.org/game.htm>
-
 	<http://www.retrosheet.org/tools.htm>
-
 	<http://www.retrosheet.org/datause.txt>
 
 ## Sources:
