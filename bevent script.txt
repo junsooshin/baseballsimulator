@@ -1,0 +1,13 @@
+ex:
+bevent -y 2016 -f 4,26-29,34,58-61 2016BOS.EVA > 2016BOS.txt
+
+4  outs
+26 first base runner ID
+27 second base runner ID
+28 third base runner ID
+29 event text
+34 event type
+58 batter destination
+59 runner on 1st dest (5 if scores and unearned, 6 if team unearned)
+60 runner on 2nd dest
+61 runner on 3rd dest
