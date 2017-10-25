@@ -1,10 +1,15 @@
 # Baseball Game Simulator in Python
 
-Runs 100 simulations between two lineups
+Runs 1000 simulations between two lineups
 
 Name: Junsoo Derek Shin
 
 Date: 13 June 2017
+
+Note: - I wrote this program to try Python while doing something fun for me.
+      - It currently lacks good structure, such as object-oriented principles.
+      - I'm planning on fixing the structure, adding more details, and 
+        eventually hosting it online.
 
 ## Running this program:
 
@@ -13,30 +18,31 @@ Date: 13 June 2017
 For the lineup files, put team name (any string is fine), full names of 9 
 batters, full name of a pitcher, separated by commas and in single line.
 
+For example:
+'Astros, George Springer, Alex Bregman, Jose Altuve, Carlos Correa, Yulieski Gurriel, Brian McCann, Marwin Gonzelez, Josh Reddick, Dallas Keuchel, Dallas Keuchel'
+
 ## Important Notes:
-- Players with names used by other players don't work (for 2016, Chris Young
-  and Matt Duffy are the only such players).
+- Players with the same names don't work right now (for 2017, Chris Young was 
+  the only such name).
 
-- In the batter and pitcher files, I manually modified "Name" column name to 
-  "Name" by stripping strange characters.
+- In the batter and pitcher files, I manually stripped strange characters from
+  the "Name" column title.
 
-- In the league file, I manually modified "Season" column name to "Season" by 
-  stripping strange characters.
-
-- Modified Enrique Hernandez's name by getting rid of accent marks.
+- In the league file, I manually stripped strange characters from the "Season"
+  column title.
 
 ## Data sources:
-- 2016 Batting (2016FanGraphsBatting.csv)
+- 2017 Batting (2017FanGraphsBatting.csv)
 	
-	<http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=0&type=8&season=2016&month=0&season1=2016&ind=0&team=&rost=&age=&filter=&players=>
+	<http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=0&type=0&season=2017&month=0&season1=2017&ind=0&team=0&rost=0&age=0&filter=&players=0>
 
-- 2016 Pitching (2016FanGraphsPitching.csv)
+- 2017 Pitching (2017FanGraphsPitching.csv)
 	
-	<http://www.fangraphs.com/leaderssplits.aspx?splitArr=&strgroup=season&statgroup=1&startDate=2016-3-1&endDate=2016-11-1&filter=IP%7Cgt%7C0&position=P&statType=player&autoPt=true&sort=19,-1&pg=0>
+	<http://www.fangraphs.com/leaderssplits.aspx?splitArr=&strgroup=season&statgroup=1&startDate=2017-3-1&endDate=2017-10-1&filter=IP%7Cgt%7C0&position=P&statType=player&autoPt=true&sort=19,-1&pg=0>
 
-- 2016 League (2016FanGraphsLeague.csv)
+- 2017 League (2017FanGraphsLeague.csv)
 	
-	<http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=0&type=0&season=2016&month=0&season1=2016&ind=0&team=0,ss&rost=0&age=0&filter=&players=0>
+	<http://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=0&type=0&season=2017&month=0&season1=2017&ind=0&team=0,ss&rost=0&age=0&filter=&players=0>
 
 - 2016 Play-by-play and Retrosheet BEVENT software (2016plays.txt)
 	
@@ -86,6 +92,6 @@ batters, full name of a pitcher, separated by commas and in single line.
 
 ## Things to be implemented in the future:
 There are a lot of things to include in the baseball simulator, but pitcher 
-management is the next thing to tackle, since right now the starting pitcher 
-completes the entire game.
+management is the next thing to tackle, since, right now, I assume that the 
+starting pitcher completes the entire game.
 

@@ -1,5 +1,5 @@
 # title: baseball.py
-# purpose: baseball game simulator using two lineups from 2016
+# purpose: baseball game simulator using two lineups from 2017
 # by Junsoo Derek Shin
 # date: 13 June 2017
 
@@ -33,7 +33,7 @@ class Pitcher():
 # reads csv files and store the data into the pandas dataframes
 # returns the 3 data frames
 def read_data():
-	batterDF = pd.read_csv("2016FanGraphsBatting.csv")
+	batterDF = pd.read_csv("2017FanGraphsBatting.csv")
 	batterDF = batterDF.set_index("Name")
 	# TODO:
 	# There are duplicate Chris Young and Matt Duffy
@@ -42,7 +42,7 @@ def read_data():
 	batterDF[batterCols] = batterDF[batterCols].apply(pd.to_numeric,
 													  errors="ignore")
 	
-	pitcherDF = pd.read_csv("2016FanGraphsPitching.csv")
+	pitcherDF = pd.read_csv("2017FanGraphsPitching.csv")
 	pitcherDF = pitcherDF.set_index("Name")
 	pitcherCols = ["TBF", "H", "2B", "3B", "HR", "BB", "IBB", "HBP", "SO"]
 	pitcherDF[pitcherCols] = pitcherDF[pitcherCols].apply(pd.to_numeric,
@@ -51,7 +51,7 @@ def read_data():
 				+ pitcherDF["HR"])
 	pitcherDF["1B"] = singleCol
 
-	leagueDF = pd.read_csv("2016FanGraphsLeague.csv")
+	leagueDF = pd.read_csv("2017FanGraphsLeague.csv")
 	leagueDF = leagueDF.set_index("Season")
 	leagueDF[batterCols] = leagueDF[batterCols].apply(pd.to_numeric,
 													  errors="ignore")
@@ -116,23 +116,23 @@ def fill_statline(batterDF, pitcherDF, leagueDF, lineup1, lineup2):
 				              - row["BB"] - row["IBB"] - row["HBP"] - row["SO"]) 
 						  / PA)
 	# duplicate code, but couldn't find a way to fit this in the above for loop
-	PA = leagueDF.loc[2016, "PA"]
-	leagueDF.loc[2016, "p1b"] = leagueDF.loc[2016, "1B"] / PA
-	leagueDF.loc[2016, "p2b"] = leagueDF.loc[2016, "2B"] / PA
-	leagueDF.loc[2016, "p3b"] = leagueDF.loc[2016, "3B"] / PA
-	leagueDF.loc[2016, "phr"] = leagueDF.loc[2016, "HR"] / PA
-	leagueDF.loc[2016, "ptw"] = (leagueDF.loc[2016, "BB"] 
-								 + leagueDF.loc[2016, "IBB"] 
-								 + leagueDF.loc[2016, "HBP"]) / PA
-	leagueDF.loc[2016, "pso"] = leagueDF.loc[2016]["SO"] / PA
-	leagueDF.loc[2016, "pbo"] = (PA - leagueDF.loc[2016, "1B"] 
-								    - leagueDF.loc[2016, "2B"] 
-						            - leagueDF.loc[2016, "3B"] 
-						            - leagueDF.loc[2016, "HR"] 
-						            - leagueDF.loc[2016, "BB"]
-						            - leagueDF.loc[2016, "IBB"] 
-						            - leagueDF.loc[2016, "HBP"] 
-						            - leagueDF.loc[2016, "SO"]) / PA
+	PA = leagueDF.loc[2017, "PA"]
+	leagueDF.loc[2017, "p1b"] = leagueDF.loc[2017, "1B"] / PA
+	leagueDF.loc[2017, "p2b"] = leagueDF.loc[2017, "2B"] / PA
+	leagueDF.loc[2017, "p3b"] = leagueDF.loc[2017, "3B"] / PA
+	leagueDF.loc[2017, "phr"] = leagueDF.loc[2017, "HR"] / PA
+	leagueDF.loc[2017, "ptw"] = (leagueDF.loc[2017, "BB"] 
+								 + leagueDF.loc[2017, "IBB"] 
+								 + leagueDF.loc[2017, "HBP"]) / PA
+	leagueDF.loc[2017, "pso"] = leagueDF.loc[2017]["SO"] / PA
+	leagueDF.loc[2017, "pbo"] = (PA - leagueDF.loc[2017, "1B"] 
+								    - leagueDF.loc[2017, "2B"] 
+						            - leagueDF.loc[2017, "3B"] 
+						            - leagueDF.loc[2017, "HR"] 
+						            - leagueDF.loc[2017, "BB"]
+						            - leagueDF.loc[2017, "IBB"] 
+						            - leagueDF.loc[2017, "HBP"] 
+						            - leagueDF.loc[2017, "SO"]) / PA
 	return (lineup1, lineup2, leagueDF)
 
 # creates and returns a dataframe containing baserunning probabilities for each 
@@ -225,19 +225,19 @@ def fill_baserunning():
 def calcOddsRatio(batter, pitcher, leagueDF):
 	# Tom Tango's Odds Ratio Method
 	odds1b = ((batter.p1b / (1-batter.p1b)) * (pitcher.p1b / (1-pitcher.p1b)) 
-	         / (leagueDF.loc[2016, "p1b"] / (1-leagueDF.loc[2016, "p1b"])))
+	         / (leagueDF.loc[2017, "p1b"] / (1-leagueDF.loc[2017, "p1b"])))
 	odds2b = ((batter.p2b / (1-batter.p2b)) * (pitcher.p2b / (1-pitcher.p2b)) 
-	         / (leagueDF.loc[2016, "p2b"] / (1-leagueDF.loc[2016, "p2b"])))
+	         / (leagueDF.loc[2017, "p2b"] / (1-leagueDF.loc[2017, "p2b"])))
 	odds3b = ((batter.p3b / (1-batter.p3b)) * (pitcher.p3b / (1-pitcher.p3b)) 
-	         / (leagueDF.loc[2016, "p3b"] / (1-leagueDF.loc[2016, "p3b"])))
+	         / (leagueDF.loc[2017, "p3b"] / (1-leagueDF.loc[2017, "p3b"])))
 	oddshr = ((batter.phr / (1-batter.phr)) * (pitcher.phr / (1-pitcher.phr)) 
-	         / (leagueDF.loc[2016, "phr"] / (1-leagueDF.loc[2016, "phr"])))
+	         / (leagueDF.loc[2017, "phr"] / (1-leagueDF.loc[2017, "phr"])))
 	oddstw = ((batter.ptw / (1-batter.ptw)) * (pitcher.ptw / (1-pitcher.ptw)) 
-	         / (leagueDF.loc[2016, "ptw"] / (1-leagueDF.loc[2016, "ptw"])))
+	         / (leagueDF.loc[2017, "ptw"] / (1-leagueDF.loc[2017, "ptw"])))
 	oddsso = ((batter.pso / (1-batter.pso)) * (pitcher.pso / (1-pitcher.pso)) 
-	         / (leagueDF.loc[2016, "pso"] / (1-leagueDF.loc[2016, "pso"])))
+	         / (leagueDF.loc[2017, "pso"] / (1-leagueDF.loc[2017, "pso"])))
 	oddsbo = ((batter.pbo / (1-batter.pbo)) * (pitcher.pbo / (1-pitcher.pbo)) 
-	         / (leagueDF.loc[2016, "pbo"] / (1-leagueDF.loc[2016, "pbo"])))
+	         / (leagueDF.loc[2017, "pbo"] / (1-leagueDF.loc[2017, "pbo"])))
 	# turn odds into probabilities
 	p1b = odds1b / (odds1b + 1)
 	p2b = odds2b / (odds2b + 1)
@@ -347,7 +347,7 @@ def playGame(lineup1, lineup2, leagueDF, brDF):
 def simulate(lineup1, lineup2, leagueDF, brDF):
 	awayWin = 0
 	homeWin = 0
-	for i in range(0, 100):
+	for i in range(0, 1000):
 		result = playGame(lineup1, lineup2, leagueDF, brDF)
 		if result == 0:
 			awayWin += 1
