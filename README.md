@@ -6,10 +6,12 @@ Name: Junsoo Derek Shin
 
 Date: 13 June 2017
 
-Note: - I wrote this program to try Python while doing something fun for me.
-      - It currently lacks good structure, such as object-oriented principles.
-      - I'm planning on fixing the structure, adding more details, and 
-        eventually hosting it online.
+Note: 
+
+- I wrote this program to try Python while doing something fun for me.
+- It currently lacks good structure, such as object-oriented principles.
+- I'm planning on fixing the structure, adding more details, and eventually
+  hosting it online.
 
 ## Running this program:
 
@@ -19,6 +21,7 @@ For the lineup files, put team name (any string is fine), full names of 9
 batters, full name of a pitcher, separated by commas and in single line.
 
 For example:
+
 'Astros, George Springer, Alex Bregman, Jose Altuve, Carlos Correa, Yulieski Gurriel, Brian McCann, Marwin Gonzelez, Josh Reddick, Dallas Keuchel, Dallas Keuchel'
 
 ## Important Notes:
