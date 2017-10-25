@@ -22,7 +22,7 @@ batters, full name of a pitcher, separated by commas and in single line.
 
 For example:
 
-'Astros, George Springer, Alex Bregman, Jose Altuve, Carlos Correa, Yulieski Gurriel, Brian McCann, Marwin Gonzelez, Josh Reddick, Dallas Keuchel, Dallas Keuchel'
+`Astros, George Springer, Alex Bregman, Jose Altuve, Carlos Correa, Yulieski Gurriel, Brian McCann, Marwin Gonzelez, Josh Reddick, Dallas Keuchel, Dallas Keuchel`
 
 ## Important Notes:
 - Players with the same names don't work right now (for 2017, Chris Young was 
